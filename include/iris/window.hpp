@@ -5,6 +5,8 @@
 #include <string_view>
 #include <tuple>
 
+#include "config.hpp"
+
 enum class MouseButton : int {
   Left = GLFW_MOUSE_BUTTON_LEFT,
   Right = GLFW_MOUSE_BUTTON_RIGHT,
