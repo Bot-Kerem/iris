@@ -18,8 +18,11 @@ project(iris VERSION 0.1 LANGUAGES CXX)
 find_package(glfw3)
 find_package(spdlog)
 
+add_subdirectory(third_party/glad)
+
+
 add_library(iris STATIC source/window.cpp)
 
-target_link_libraries(iris glfw3 spdlog)
+target_link_libraries(iris glfw3 spdlog glad)
 target_include_directories(iris PUBLIC include PRIVATE source)
 
