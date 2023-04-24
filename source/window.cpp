@@ -7,9 +7,9 @@ Window::Window(const std::string_view title, int width, int height) noexcept {
   spdlog::info("Initializing glfw");
   glfwInit();
 
-  /* Set OpenGL Context 3.3 Compatibility Profile */
-  const int version_major = 3;
-  const int version_minor = 3;
+  /* Set OpenGL Context 4.6 Compatibility Profile */
+  const int version_major = 4;
+  const int version_minor = 6;
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version_major);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version_minor);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
@@ -33,8 +33,6 @@ Window::Window(const std::string_view title, int width, int height) noexcept {
   /* Enable VSync */
   spdlog::info("VSync: ENABLED");
   glfwSwapInterval(1);
-
-  // gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
 }
 
 Window::~Window() noexcept {
