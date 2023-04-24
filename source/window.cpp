@@ -4,17 +4,23 @@
 
 Window::Window(const std::string_view title, int width, int height) noexcept {
   /* Initialize glfw */
+  spdlog::info("Initializing glfw");
   glfwInit();
 
   /* Set OpenGL Context 3.3 Compatibility Profile */
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  const int version_major = 3;
+  const int version_minor = 3;
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version_major);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version_minor);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+  spdlog::info("Graphics API: OpenGL {}.{} {} Profile", version_major,
+               version_minor, "Compatibility");
 
   /* Set window unresizeable */
   glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
   /* Create window */
+  spdlog::info("Creating window: {}", title);
   window = glfwCreateWindow(width, height, title.data(), nullptr, nullptr);
 
   /* Create cursors */
@@ -25,6 +31,7 @@ Window::Window(const std::string_view title, int width, int height) noexcept {
   glfwMakeContextCurrent(window);
 
   /* Enable VSync */
+  spdlog::info("VSync: ENABLED");
   glfwSwapInterval(1);
 
   /* Load OpenGL */
@@ -33,11 +40,14 @@ Window::Window(const std::string_view title, int width, int height) noexcept {
 
 Window::~Window() noexcept {
   /* Destroy Cursors*/
+  spdlog::info("Destroying cursors");
   glfwDestroyCursor(cursor_arrow);
   glfwDestroyCursor(cursor_hand);
   /* Destroy window */
+  spdlog::info("Destroying windows");
   glfwDestroyWindow(window);
   /* Terminate library */
+  spdlog::info("Terminating glfw");
   glfwTerminate();
 }
 
