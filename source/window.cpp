@@ -34,7 +34,6 @@ Window::Window(const std::string_view title, int width, int height) noexcept {
   spdlog::info("VSync: ENABLED");
   glfwSwapInterval(1);
 
-  /* Load OpenGL */
   // gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
 }
 
@@ -81,6 +80,10 @@ KeyState Window::get_mouse_button(MouseButton button) const noexcept {
 
 KeyState Window::get_key(Key key) const noexcept {
   return static_cast<KeyState>(glfwGetKey(window, static_cast<int>(key)));
+}
+
+GLFWglproc Window::get_proc_address(const char* procname) noexcept {
+  return glfwGetProcAddress(procname);
 }
 
 void Window::set_cursor(Cursor cursor) const noexcept {

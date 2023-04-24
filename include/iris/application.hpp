@@ -19,6 +19,7 @@ class Application {
 
  private:
   void main_loop();
+  void build_app();
 
  public:
   int exec();

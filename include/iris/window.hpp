@@ -2,6 +2,7 @@
 
 #include <GLFW/glfw3.h>
 
+#include <functional>
 #include <string_view>
 #include <tuple>
 
@@ -50,6 +51,8 @@ class Window {
 
   [[nodiscard]] KeyState get_mouse_button(MouseButton button) const noexcept;
   [[nodiscard]] KeyState get_key(Key key) const noexcept;
+
+  [[nodiscard]] static GLFWglproc get_proc_address(const char*) noexcept;
 
   void set_cursor(Cursor cursor) const noexcept;
 };
