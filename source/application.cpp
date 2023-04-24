@@ -6,8 +6,16 @@ void Application::main_loop() {
   while (!window.close_requested()) {
     window.poll_events();
 
+    render();
+
     window.swap_buffers();
   }
+}
+
+void Application::render() {
+  /* Set clear color to gray */
+  glClearColor(0.52f, 0.52f, 0.52f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void Application::build_app() {

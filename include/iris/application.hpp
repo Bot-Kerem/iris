@@ -20,6 +20,7 @@ class Application {
  private:
   void main_loop();
   void build_app();
+  void render();
 
  public:
   int exec();
