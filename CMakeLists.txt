@@ -16,8 +16,10 @@ project(iris VERSION 0.1 LANGUAGES CXX)
 
 # Check third party libraries
 find_package(glfw3)
+find_package(spdlog)
 
 add_library(iris STATIC source/window.cpp)
 
-target_include_directories(iris PUBLIC include)
+target_link_libraries(iris glfw3 spdlog)
+target_include_directories(iris PUBLIC include PRIVATE source)
 
