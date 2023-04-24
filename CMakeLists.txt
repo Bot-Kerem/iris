@@ -21,8 +21,11 @@ find_package(spdlog)
 add_subdirectory(third_party/glad)
 
 
-add_library(iris STATIC source/window.cpp)
+add_library(iris STATIC
+	source/window.cpp
+	source/application.cpp
+	)
 
-target_link_libraries(iris glfw spdlog glad)
+target_link_libraries(iris glfw spdlog::spdlog glad)
 target_include_directories(iris PUBLIC include PRIVATE source)
 
