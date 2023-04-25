@@ -21,6 +21,9 @@ void Application::build_app() {
   /* Load OpenGL */
   spdlog::info("Loading OpenGL");
   gladLoadGLLoader(reinterpret_cast<GLADloadproc>(Window::get_proc_address));
+
+  spdlog::info("Active scene: \"Main Scene\"");
+  main_scene.activate();
 }
 
 Application::Application(const WindowCreateInfo& info_window)

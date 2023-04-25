@@ -10,5 +10,6 @@ class Scene {
   Scene() = default;
 
   void draw() const noexcept;
+  void activate() const noexcept;
   void set_clear_color(const glm::vec3& color) noexcept;
 };
