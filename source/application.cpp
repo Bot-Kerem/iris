@@ -14,8 +14,7 @@ void Application::main_loop() {
 
 void Application::render() {
   /* Set clear color to gray */
-  glClearColor(0.52f, 0.52f, 0.52f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
+  main_scene.draw();
 }
 
 void Application::build_app() {

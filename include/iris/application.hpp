@@ -4,6 +4,7 @@
 
 #include "config.hpp"
 #include "window.hpp"
+#include "scene.hpp"
 
 class Application {
  protected:
@@ -13,6 +14,7 @@ class Application {
     unsigned int height;
   };
   Window window;
+  Scene main_scene;
 
   Application(const WindowCreateInfo& info_window);
   ~Application() = default;
