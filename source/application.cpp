@@ -30,7 +30,7 @@ int Application::exec() {
   spdlog::info("Executing application");
 
   spdlog::info("Building the application");
-  void build_app();
+  build_app();
   spdlog::info("Entering the main loop");
   main_loop();
   return 0;
