@@ -13,7 +13,7 @@ void Application::main_loop() {
 }
 
 void Application::render() {
-  /* Set clear color to gray */
+  /* Draw the main scene */
   main_scene.draw();
 }
 
