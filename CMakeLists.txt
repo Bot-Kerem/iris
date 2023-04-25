@@ -24,6 +24,7 @@ add_subdirectory(third_party/glad)
 add_library(iris STATIC
 	source/window.cpp
 	source/application.cpp
+	source/scene.cpp
 	)
 
 target_link_libraries(iris glfw spdlog::spdlog glad)
