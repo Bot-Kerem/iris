@@ -1,5 +1,7 @@
 #include <glad/glad.h>
 
+#include <algorithm>
+
 #include "iris/application.hpp"
 
 void Application::main_loop() {
@@ -14,7 +16,7 @@ void Application::main_loop() {
 
 void Application::render() {
   /* Draw the main scene */
-  main_scene.draw();
+  current_scene->draw();
 }
 
 void Application::build_app() {
@@ -22,8 +24,12 @@ void Application::build_app() {
   spdlog::info("Loading OpenGL");
   gladLoadGLLoader(reinterpret_cast<GLADloadproc>(Window::get_proc_address));
 
-  spdlog::info("Active scene: \"Main Scene\"");
-  main_scene.activate();
+  auto [scene, scene_name] = build();
+  scenes.insert(scene_name, std::move(scene_name));
+
+  spdlog::info("Active scene: \"{}\"", scene_name);
+  current_scene = scenes.at(scene_name).get();
+  current_scene->activate();
 }
 
 Application::Application(const WindowCreateInfo& info_window)
