@@ -22,6 +22,8 @@ class Shader {
  public:
   Shader(const std::string_view vertex_shader_source,
          const std::string_view fragment_shader_source) noexcept;
+  Shader(const unsigned int vertex_shader,
+         const unsigned int fragment_shader) noexcept;
   Shader() = default;
   ~Shader() noexcept;
 
@@ -32,7 +34,9 @@ class Shader {
   static unsigned int get_register(const std::string& shader_name);
 
   void load(const std::string_view vertex_shader_source,
-            const std::string_view fragment_shader_source) noexcept;
+            const std::string_view fragment_shader_source);
+  void load(const unsigned int vertex_shader,
+            const unsigned int fragment_shader);
 
   void set_vec2(const std::string_view uniform, const auto& val) const noexcept;
   void set_vec3(const std::string_view uniform, const auto& val) const noexcept;
