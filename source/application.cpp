@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 
 #include <algorithm>
+#include <utility>
 
 #include "iris/application.hpp"
 
@@ -25,7 +26,7 @@ void Application::build_app() {
   gladLoadGLLoader(reinterpret_cast<GLADloadproc>(Window::get_proc_address));
 
   auto [scene, scene_name] = build();
-  scenes.insert(scene_name, std::move(scene_name));
+  scenes.insert(std::make_pair(scene_name, std::move(scene)));
 
   spdlog::info("Active scene: \"{}\"", scene_name);
   current_scene = scenes.at(scene_name).get();
