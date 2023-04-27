@@ -25,6 +25,9 @@ add_library(iris STATIC
 	source/window.cpp
 	source/application.cpp
 	source/scene.cpp
+	source/vertex_array.cpp
+	source/vertex_buffer.cpp
+	source/shader.cpp
 	)
 
 target_link_libraries(iris glfw spdlog::spdlog glad)
