@@ -4,6 +4,14 @@
 
 void Scene::draw() const noexcept {
   glClear(GL_COLOR_BUFFER_BIT);
+
+  /* Draw scene */
+  for ([[maybe_unused]] auto& [_, shader_scene]: scene_elements) {
+    shader_scene.first->use();
+    for (auto& mesh: shader_scene.second) {
+      mesh->draw();
+    }
+  }
 }
 
 void Scene::activate() noexcept {
