@@ -25,4 +25,8 @@ class Scene {
   void activate() noexcept;
   void deactivate() noexcept;
   void set_clear_color(const glm::vec3& color) noexcept;
+
+  void add_shader(std::unique_ptr<Shader>& shader,
+                  const std::string& shader_name);
+  void add_mesh(std::unique_ptr<Mesh>& mesh, const std::string& shader_name);
 };
