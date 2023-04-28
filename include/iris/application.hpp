@@ -28,7 +28,7 @@ class Application {
   void build_app();
   void render();
 
-  virtual std::pair<std::unique_ptr<Scene>&, std::string> build() = 0;
+  virtual std::pair<std::unique_ptr<Scene>, std::string> build() = 0;
 
   std::map<std::string, std::unique_ptr<Scene>> scenes;
 
