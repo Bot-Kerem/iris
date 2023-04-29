@@ -19,6 +19,7 @@ find_package(glfw3)
 find_package(spdlog)
 
 add_subdirectory(third_party/glad)
+add_subdirectory(third_party/stb)
 
 
 add_library(iris STATIC
@@ -31,6 +32,6 @@ add_library(iris STATIC
 	source/mesh.cpp
 	)
 
-target_link_libraries(iris glfw spdlog::spdlog glad)
+target_link_libraries(iris glfw spdlog::spdlog glad stb)
 target_include_directories(iris PUBLIC include PRIVATE source)
 
