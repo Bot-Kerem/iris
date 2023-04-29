@@ -30,6 +30,7 @@ add_library(iris STATIC
 	source/vertex_buffer.cpp
 	source/shader.cpp
 	source/mesh.cpp
+	source/texture.cpp
 	)
 
 target_link_libraries(iris glfw spdlog::spdlog glad stb)
