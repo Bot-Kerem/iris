@@ -101,3 +101,8 @@ Shader::Shader(const unsigned int vertex_shader,
 }
 
 Shader::~Shader() noexcept { glDeleteProgram(m_program); }
+
+void Shader::set_mat4(const std::string_view uniform, const glm::mat4& val) const noexcept {
+  glUniformMatrix4fv(get_location(uniform), 1, GL_FALSE, reinterpret_cast<const float*>(&val));
+}
+
