@@ -31,6 +31,7 @@ add_library(iris STATIC
 	source/shader.cpp
 	source/mesh.cpp
 	source/texture.cpp
+	source/tilemap.cpp
 	)
 
 target_link_libraries(iris glfw spdlog::spdlog glad stb)
