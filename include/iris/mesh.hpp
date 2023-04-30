@@ -1,11 +1,12 @@
 #pragma once
 
+#include "iris/shader.hpp"
 #include "vertex_array.hpp"
 #include "vertex_buffer.hpp"
 
 class Mesh {
  protected:
-  enum class PrimitiveType: unsigned int {
+  enum class PrimitiveType : unsigned int {
     Point = 0x000,
     Line = 0x0001,
     LineLoop = 0x002,
@@ -28,5 +29,5 @@ class Mesh {
   Mesh() = default;
   virtual ~Mesh() = default;
 
-  virtual void draw() = 0;
+  virtual void draw(const Shader&) = 0;
 };
