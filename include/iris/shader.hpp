@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glm/ext/matrix_float4x4.hpp>
 #include <limits>
 #include <map>
 #include <string>
@@ -43,7 +44,7 @@ class Shader {
   void set_vec4(const std::string_view uniform, const auto& val) const noexcept;
 
   void set_mat3(const std::string_view uniform, const auto& val) const noexcept;
-  void set_mat4(const std::string_view uniform, const auto& val) const noexcept;
+  void set_mat4(const std::string_view uniform, const glm::mat4& val) const noexcept;
 
   Shader(Shader&&) = delete;
   Shader(const Shader&) = delete;

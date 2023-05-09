@@ -3,12 +3,12 @@
 #include "iris/shader.hpp"
 #include "mesh.hpp"
 
-constexpr float tile_size = 0.1f;
+constexpr float tile_size = 800.0f;
 
-class Tilemap : Mesh {
+class Tilemap : public Mesh {
   private:
   public:
     Tilemap() noexcept;
     
-    void draw(const Shader& shader) override;
+    void draw(const std::unique_ptr<Shader>& shader) override;
 };

@@ -48,6 +48,7 @@ class Window {
   [[nodiscard]] GLFWwindow* get_window() const noexcept;
   [[nodiscard]] std::tuple<double, double> get_mouse_position() const noexcept;
   [[maybe_unused]] void set_mouse_position(double x, double y) noexcept;
+  void set_framebuffer_size_callback(std::function<void(size_t w, size_t h)>) noexcept;
 
   [[nodiscard]] KeyState get_mouse_button(MouseButton button) const noexcept;
   [[nodiscard]] KeyState get_key(Key key) const noexcept;

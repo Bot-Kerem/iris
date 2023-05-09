@@ -1,5 +1,6 @@
 #include "iris/window.hpp"
 
+#include <functional>
 #include <type_traits>
 
 Window::Window(const std::string_view title, int width, int height) noexcept {
@@ -69,6 +70,10 @@ std::tuple<double, double> Window::get_mouse_position() const noexcept {
 void Window::set_mouse_position(double x, double y) noexcept {
   mouse_position = std::make_tuple(x, y);
   glfwSetCursorPos(window, x, y);
+}
+
+void Window::set_framebuffer_size_callback(
+    std::function<void(size_t w, size_t h)>) noexcept {
 }
 
 KeyState Window::get_mouse_button(MouseButton button) const noexcept {

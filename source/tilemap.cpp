@@ -23,7 +23,7 @@ Tilemap::Tilemap() noexcept {
   m_vertex_array.vertex_attrib_pointer(0, 2, sizeof(TileVertex), 0);
 }
 
-void Tilemap::draw([[maybe_unused]] const Shader& shader) {
+void Tilemap::draw([[maybe_unused]] const std::unique_ptr<Shader>& shader) {
   draw_arrays(6, PrimitiveType::Triangle);
 }
 

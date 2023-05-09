@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+#include <glm/ext/matrix_float4x4.hpp>
 #include <map>
 #include <memory>
 #include <string_view>
@@ -27,6 +29,7 @@ class Application {
   void main_loop();
   void build_app();
   void render();
+  void framebuffer_size_callback(const size_t w, const size_t h);
 
   virtual std::pair<std::unique_ptr<Scene>, std::string> build() = 0;
 

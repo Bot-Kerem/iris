@@ -2,8 +2,11 @@
 
 #include <glad/glad.h>
 
+#include <glm/ext/matrix_float4x4.hpp>
 #include <memory>
 #include <utility>
+
+extern glm::mat4 view_matrix;
 
 void Scene::draw() const noexcept {
   glClear(GL_COLOR_BUFFER_BIT);
@@ -11,6 +14,7 @@ void Scene::draw() const noexcept {
   /* Draw scene */
   for ([[maybe_unused]] auto& [_, shader_scene] : scene_elements) {
     shader_scene.first->use();
+    shader_scene.first->set_mat4("view", view_matrix);
     for (auto& mesh : shader_scene.second) {
       mesh->draw(shader_scene.first);
     }
