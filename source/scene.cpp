@@ -12,7 +12,7 @@ void Scene::draw() const noexcept {
   for ([[maybe_unused]] auto& [_, shader_scene] : scene_elements) {
     shader_scene.first->use();
     for (auto& mesh : shader_scene.second) {
-      mesh->draw();
+      mesh->draw(shader_scene.first);
     }
   }
 }

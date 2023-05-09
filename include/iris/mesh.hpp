@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "iris/shader.hpp"
 #include "vertex_array.hpp"
 #include "vertex_buffer.hpp"
@@ -29,5 +30,5 @@ class Mesh {
   Mesh() = default;
   virtual ~Mesh() = default;
 
-  virtual void draw(const Shader&) = 0;
+  virtual void draw(const std::unique_ptr<Shader>&) = 0;
 };
