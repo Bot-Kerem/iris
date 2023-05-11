@@ -1,6 +1,8 @@
 #include "iris/window.hpp"
+#include <GLFW/glfw3.h>
 
 #include <functional>
+#include <tuple>
 #include <type_traits>
 
 Window::Window(const std::string_view title, int width, int height) noexcept {
@@ -83,6 +85,13 @@ KeyState Window::get_mouse_button(MouseButton button) const noexcept {
 
 KeyState Window::get_key(Key key) const noexcept {
   return static_cast<KeyState>(glfwGetKey(window, static_cast<int>(key)));
+}
+
+std::tuple<int, int> Window::get_window_size() const noexcept {
+  std::tuple<int, int> window_size;
+  glfwGetWindowSize(window, &std::get<0>(window_size), &std::get<1>(window_size));
+
+  return window_size;
 }
 
 GLFWglproc Window::get_proc_address(const char* procname) noexcept {

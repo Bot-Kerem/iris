@@ -52,6 +52,7 @@ class Window {
 
   [[nodiscard]] KeyState get_mouse_button(MouseButton button) const noexcept;
   [[nodiscard]] KeyState get_key(Key key) const noexcept;
+  [[nodiscard]] std::tuple<int, int> get_window_size() const noexcept;
 
   [[nodiscard]] static GLFWglproc get_proc_address(const char*) noexcept;
 

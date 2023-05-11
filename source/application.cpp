@@ -30,7 +30,8 @@ void Application::build_app() {
   gladLoadGLLoader(reinterpret_cast<GLADloadproc>(Window::get_proc_address));
 
   /* Set view matrix */
-  view_matrix = glm::ortho(0.0f, static_cast<float>(800), 0.0f, static_cast<float>(600));
+  auto window_size = window.get_window_size();
+  view_matrix = glm::ortho(0.0f, static_cast<float>(std::get<0>(window_size)), 0.0f, static_cast<float>(std::get<1>(window_size)));
 
   auto [scene, scene_name] = build();
   scenes.insert(std::make_pair(scene_name, std::move(scene)));

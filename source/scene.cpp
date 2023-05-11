@@ -6,23 +6,24 @@
 #include <memory>
 #include <utility>
 
-extern glm::mat4 view_matrix;
-
 void Scene::draw() const noexcept {
   glClear(GL_COLOR_BUFFER_BIT);
 
   /* Draw scene */
-  for ([[maybe_unused]] auto& [_, shader_scene] : scene_elements) {
-    shader_scene.first->use();
-    shader_scene.first->set_mat4("view", view_matrix);
-    for (auto& mesh : shader_scene.second) {
-      mesh->draw(shader_scene.first);
-    }
+  for (auto& mesh : scene_elements) {
+    mesh->draw();
   }
 }
 
 void Scene::activate() noexcept {
   activated = true;
+
+  extern const glm::mat4 view_matrix;
+  for (auto& shader: shaders) {
+    shader.second->use();
+    shader.second->set_mat4("view", view_matrix);
+  }
+
   glClearColor(clear_color.r, clear_color.g, clear_color.b, 1.0f);
 }
 
@@ -33,14 +34,15 @@ void Scene::set_clear_color(const glm::vec3& color) noexcept {
   clear_color = color;
 }
 
-void Scene::add_shader(std::unique_ptr<Shader>& shader,
-                       const std::string& shader_name) {
-  scene_elements.insert(std::make_pair(
-      shader_name,
-      std::make_pair(std::move(shader), std::vector<std::unique_ptr<Mesh>>())));
+std::shared_ptr<Shader> Scene::get_shader(const std::string& shader_name) const {
+  return shaders.at(shader_name);
 }
 
-void Scene::add_mesh(std::unique_ptr<Mesh>& mesh,
-                     const std::string& shader_name) {
-  scene_elements.at(shader_name).second.push_back(std::move(mesh));
+void Scene::add_shader(std::shared_ptr<Shader> shader,
+                       const std::string& shader_name) {
+  shaders.emplace(shader_name, shader);
+}
+
+void Scene::add_mesh(std::unique_ptr<Mesh>& mesh) {
+  scene_elements.push_back(std::move(mesh));
 }

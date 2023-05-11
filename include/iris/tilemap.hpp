@@ -1,14 +1,19 @@
 #pragma once
 
-#include "iris/shader.hpp"
+#include <memory>
 #include "mesh.hpp"
+#include "shader.hpp"
+#include "texture.hpp"
 
-constexpr float tile_size = 800.0f;
+constexpr float tile_size = 100.0f;
 
 class Tilemap : public Mesh {
-  private:
-  public:
-    Tilemap() noexcept;
-    
-    void draw(const std::unique_ptr<Shader>& shader) override;
+ private:
+  Texture tex;
+
+  std::shared_ptr<Shader> tile_shader;
+ public:
+  Tilemap(std::shared_ptr<Shader> shader) noexcept;
+
+  void draw() override;
 };
