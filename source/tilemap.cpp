@@ -36,25 +36,6 @@ Tilemap::Tilemap(std::shared_ptr<Shader> shader) noexcept
                                        offsetof(TileVertex, position));
   m_vertex_array.vertex_attrib_pointer(1, 2, sizeof(TileVertex),
                                        offsetof(TileVertex, uv));
-
-  std::shared_ptr<Texture> textures[] = {
-  std::make_unique<Texture>(),
-  std::make_unique<Texture>(),
-  std::make_unique<Texture>(),
-  };
-
-  textures[0]->load_from_file("res/luffy.jpg", Texture::Format::RGB);
-  textures[1]->load_from_file("res/nami.jpg", Texture::Format::RGB);
-  textures[2]->load_from_file("res/edward.jpg", Texture::Format::RGB);
-
-  const glm::i32vec2 tile_map_size{4, 3};
-  for (int y = 0; y < tile_map_size.y; y++) {
-    tiles.push_back({});
-    for (int x = 0; x < tile_map_size.x; x++) {
-      auto tile = std::make_unique<Tile>(textures[y]);
-      tiles[y].push_back(std::move(tile));
-    } 
-  }
 }
 
 void Tilemap::draw() {
@@ -69,4 +50,16 @@ void Tilemap::draw() {
       draw_arrays(6, PrimitiveType::Triangle);
     }
   }
+}
+
+void Tilemap::add_texture(std::shared_ptr<Texture> texture, const std::string& texture_name) {
+  textures.emplace(texture_name, texture);
+}
+
+void Tilemap::add_row(std::vector<std::unique_ptr<Tile>>& row) {
+  tiles.push_back(std::move(row));
+}
+
+std::shared_ptr<Texture> Tilemap::get_texture(const std::string& texture_name) const {
+  return textures.at(texture_name);
 }
