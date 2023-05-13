@@ -16,7 +16,7 @@ void Shader::register_shader(const std::string& shader_name,
                              Type type) noexcept {
   unsigned int shader = create_shader(shader_source, type);
 
-  shaders.insert(std::make_pair(shader_name, shader));
+  shaders.emplace(shader_name, shader);
 }
 
 void Shader::load(const std::string_view vertex_shader_source,
