@@ -12,7 +12,7 @@
 #include "shader.hpp"
 
 class Scene {
- private:
+ protected:
   glm::vec3 clear_color = glm::vec3{0.52f};
   bool activated = false;
 
@@ -22,7 +22,7 @@ class Scene {
  public:
   Scene() = default;
 
-  virtual void load(const std::string_view scene_data) = 0;
+  virtual std::string load(const std::string_view scene_data) = 0;
 
   void draw() const noexcept;
   void activate() noexcept;
