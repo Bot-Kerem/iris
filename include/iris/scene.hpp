@@ -35,7 +35,7 @@ class Scene {
                   const std::string& shader_name);
 
   void add_mesh(auto& mesh) {
-    scene_elements.push_back(std::reinterpret_pointer_cast<Mesh*>(std::move(mesh)));
+    scene_elements.push_back(std::move(mesh));
   }
 
 };
