@@ -42,7 +42,3 @@ void Scene::add_shader(std::shared_ptr<Shader> shader,
                        const std::string& shader_name) {
   shaders.emplace(shader_name, shader);
 }
-
-void Scene::add_mesh(std::unique_ptr<Mesh>& mesh) {
-  scene_elements.push_back(std::move(mesh));
-}
