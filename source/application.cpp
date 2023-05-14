@@ -3,11 +3,14 @@
 
 #include <algorithm>
 #include <glm/ext/matrix_clip_space.hpp>
+#include <memory>
 #include <utility>
 
 #include "iris/application.hpp"
+#include "iris/camera.hpp"
 
 glm::mat4 view_matrix;
+Camera camera;
 
 void Application::main_loop() {
   while (!window.close_requested()) {
